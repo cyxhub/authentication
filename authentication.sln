@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basicauthentication", "Basicauthentication\Basicauthentication.csproj", "{F256B2E4-7328-4229-B30B-2597FE5C24B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F256B2E4-7328-4229-B30B-2597FE5C24B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F256B2E4-7328-4229-B30B-2597FE5C24B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F256B2E4-7328-4229-B30B-2597FE5C24B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F256B2E4-7328-4229-B30B-2597FE5C24B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C48A63A-67EF-4288-9858-C2176F8B78C3}
+	EndGlobalSection
+EndGlobal
