@@ -1,0 +1,16 @@
+﻿simple access quick check
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>the user is authenticated</h1>
+}
+else
+{
+    <h1>not authenticated</h1>
+}
+big guns reusaable functionss
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService authorizationService
+@if((await authorizationService.AuthorizeAsync(User, "claimdob")).Succeeded)
+{
+    <h2>this user has dob</h2>
+}
