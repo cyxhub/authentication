@@ -10,7 +10,7 @@ else
 big guns reusaable functionss
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService authorizationService
-@if((await authorizationService.AuthorizeAsync(User, "claimdob")).Succeeded)
+@if((await authorizationService.AuthorizeAsync(User, "claim.dob")).Succeeded)
 {
     <h2>this user has dob</h2>
 }

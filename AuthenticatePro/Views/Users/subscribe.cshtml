@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "subscribe";
+}
+
+<h1>subscribe</h1>
+
+@model IEnumerable<AuthPro.Models.Users>
+<table class="table">
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.id</td>
+            <td>@u.name</td>
+            <td>@u.address</td>
+            <td>@u.email</td>
+            @if (int.Parse(User.Claims.FirstOrDefault(x => x.Type == AuthPro.CustomAuthorize.Operation.LimitLevel)?.Value ?? "0") > 2)
+            {
+                <td>
+                    <button class="btn-info">edit</button>
+                </td>
+            }
+            @if (int.Parse(User.Claims.FirstOrDefault(x => x.Type == AuthPro.CustomAuthorize.Operation.LimitLevel)?.Value ?? "0") > 8)
+            {
+                <td>
+                    <button class="btn-danger">del</button>
+                </td>
+            }
+            @if (int.Parse(User.Claims.FirstOrDefault(x => x.Type == AuthPro.CustomAuthorize.Operation.LimitLevel)?.Value ?? "0") > 1)
+            {
+                <td>
+                    <button class="btn-primary">add</button>
+                </td>
+            }
+        </tr>
+    }
+</table>

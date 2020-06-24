@@ -47,6 +47,7 @@ namespace Basic.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         public IActionResult authenticate()
         {
             var defclim = new List<Claim>
