@@ -26,7 +26,6 @@ namespace AuthPro.Controllers
         [HttpGet]
         public IActionResult GetToken(Users model)
         {
-            Console.WriteLine(model.name);
             Users u = null;
             foreach (var user in _userStore.users)
             {

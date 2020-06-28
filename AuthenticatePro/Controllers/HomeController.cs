@@ -76,17 +76,17 @@ namespace AuthenticatePro.Controllers
                 new Claim(Operation.LimitLevel,u.level.ToString()),
                 new Claim(Operation.card, u.type),
                 new Claim(ClaimTypes.Role,"ideny"),
-                
+
             };
             var claimsIdentity = new ClaimsIdentity(claims, "identify");
-            /* var claims = new List<Claim> { 
-                 new Claim(JwtClaimTypes.Id,u.id.ToString()),
-                 new Claim(JwtClaimTypes.Name,u.name),
-                 new Claim(JwtClaimTypes.Email,u.email),
-                 new Claim(JwtClaimTypes.Address,u.address),
-             };
-             var claimsIdentity = new ClaimsIdentity("identity card",JwtClaimTypes.Name, JwtClaimTypes.Role);
-             */
+            /* var claims = new List<Claim> {
+                  new Claim(JwtClaimTypes.Id,u.id.ToString()),
+                  new Claim(JwtClaimTypes.Name,u.name),
+                  new Claim(JwtClaimTypes.Email,u.email),
+                  new Claim(JwtClaimTypes.Address,u.address),
+              };
+             var claimsIdentity = new ClaimsIdentity("identity card", JwtClaimTypes.Name, JwtClaimTypes.Role);
+ */
             var claimsprinciple = new ClaimsPrincipal(claimsIdentity);
             var result=HttpContext.SignInAsync(claimsprinciple,new AuthenticationProperties
             {
