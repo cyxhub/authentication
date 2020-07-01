@@ -59,8 +59,8 @@ namespace AuthenticatePro.Controllers
                 new Claim(ClaimTypes.Email,u.email),
                 new Claim(ClaimTypes.StreetAddress,u.address),
                 new Claim(Operation.LimitLevel,u.level.ToString()),
-                new Claim(Operation.card, u.type),
                 new Claim(ClaimTypes.Role,"ideny"),
+                /*new Claim(Operation.card, u.type),*/
 
             };
             var claimsIdentity = new ClaimsIdentity(claims, "identify");

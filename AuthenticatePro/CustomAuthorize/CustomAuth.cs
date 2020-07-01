@@ -11,11 +11,11 @@ namespace AuthPro.CustomAuthorize
     public static class Operation
     {
         public const string LimitLevel = "LimitLevel";
-        public const string card = "card";
+        /*public const string card = "card";
         public static List<string> operationList = new List<string>
         {
             LimitLevel,card
-        };
+        };*/
     }
     public class LimitLevelAttribute : AuthorizeAttribute
     {
@@ -56,8 +56,7 @@ namespace AuthPro.CustomAuthorize
             var policy = new AuthorizationPolicyBuilder();
             if (type == Operation.LimitLevel)
                 return policy.AddRequirements(new LimitValueRequirement(int.Parse(val))).Build();
-            else if (type == Operation.card)
-                return policy.RequireClaim(type,val).Build();
+
             return null;
         }
     }
@@ -70,12 +69,16 @@ namespace AuthPro.CustomAuthorize
         }
         public override Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
-            foreach(var opt in Operation.operationList)
+            /*foreach(var opt in Operation.operationList)
             {
                 if (policyName.StartsWith(opt))
                 {
                     return Task.FromResult(CustomAuthorizationFactory.Create(policyName));
                 }
+            }*/
+            if (policyName.StartsWith(Operation.LimitLevel))
+            {
+                return Task.FromResult(CustomAuthorizationFactory.Create(policyName));
             }
             return base.GetPolicyAsync(policyName);
         }

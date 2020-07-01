@@ -52,20 +52,19 @@ namespace AuthPro.Controllers
         }
 
         [LimitLevel(6)]
-        [Authorize(Policy = Operation.card + "." + CardType.administrator)]
         public IActionResult admin()
         {
             UserStore userStore = new UserStore();
             return View(userStore.users);
         }
-        [Authorize(Policy = Operation.card+"." + CardType.author)]
+        [LimitLevel(3)]
         public IActionResult author()
         {
             UserStore userStore = new UserStore();
             return View(userStore.users);
         }
 
-        [Authorize(Policy = Operation.card + "." + CardType.subscribe)]
+        [LimitLevel(4)]
         public IActionResult subscribe()
         {
             UserStore userStore = new UserStore();
