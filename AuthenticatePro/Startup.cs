@@ -7,6 +7,7 @@ using AuthPro.cookievalife;
 using AuthPro.CustomAuthorize;
 using AuthPro.Models;
 using IdentityModel;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -108,7 +109,7 @@ namespace AuthenticatePro
             app.UseStaticFiles();
             app.UseSession();
             app.UseRouting();
-            app.UseAuthentication();
+            app.UseAuthentication();//AuthenticationMiddleware
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
