@@ -49,23 +49,8 @@ namespace AuthenticatePro.Controllers
         public IActionResult login(Users model)
         {
             Users u = null;
-            foreach(var user in _userStore.users)
-            {
-                if (model.name ==user.name&& model.password == user.password)
-                {
-                    u = new Users
-                    {
-                        id = user.id,
-                        name=user.name,
-                        email=user.email,
-                        address=user.address,
-                        password=user.password,
-                        type=user.type,
-                        level=user.level
-                    };
-                }
-               
-            }
+            u = _userStore.users.FirstOrDefault(x=>x.name==model.name&&x.password==model.password);
+            
             if(u==null) return View("login");
 
             var claims = new List<Claim> {

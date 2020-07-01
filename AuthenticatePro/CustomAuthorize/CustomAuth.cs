@@ -17,19 +17,26 @@ namespace AuthPro.CustomAuthorize
             LimitLevel,card
         };
     }
-    public class LimitValue : IAuthorizationRequirement
+    public class LimitLevelAttribute : AuthorizeAttribute
+    {
+        public LimitLevelAttribute(int level)
+        {
+            Policy = $"{Operation.LimitLevel}.{level}";
+        }
+    }
+    public class LimitValueRequirement : IAuthorizationRequirement
     {
         public int level { get; }
-        public LimitValue(int lev)
+        public LimitValueRequirement(int lev)
         {
             level = lev;
         }
     }
     public class CustomAuthorizationHandler:
-        AuthorizationHandler<LimitValue>
+        AuthorizationHandler<LimitValueRequirement>
     {
         protected override Task HandleRequirementAsync(
-            AuthorizationHandlerContext context, LimitValue requirement)
+            AuthorizationHandlerContext context, LimitValueRequirement requirement)
         {
             var value = int.Parse(context.User.Claims.FirstOrDefault(x=>x.Type==Operation.LimitLevel)?.Value??"0");
             if (requirement.level < value)
@@ -48,7 +55,7 @@ namespace AuthPro.CustomAuthorize
             var val = names.Last();
             var policy = new AuthorizationPolicyBuilder();
             if (type == Operation.LimitLevel)
-                return policy.AddRequirements(new LimitValue(int.Parse(val))).Build();
+                return policy.AddRequirements(new LimitValueRequirement(int.Parse(val))).Build();
             else if (type == Operation.card)
                 return policy.RequireClaim(type,val).Build();
             return null;
@@ -73,13 +80,7 @@ namespace AuthPro.CustomAuthorize
             return base.GetPolicyAsync(policyName);
         }
     }
-    public class LimitLevelAttribute : AuthorizeAttribute
-    {
-        public LimitLevelAttribute(int level)
-        {
-            Policy = $"{Operation.LimitLevel}.{level}";
-        }
-    }
+   
 
     //------------------------------------------
     public static class CardType
@@ -89,27 +90,4 @@ namespace AuthPro.CustomAuthorize
         public const string administrator = "administrator";
         public static List<string> cardlist = new List<string> { subscribe, author, administrator };
     }
-   /* public class CardRequirement : IAuthorizationRequirement
-    {
-        public string cardType { get;  }
-        public CardRequirement(string type)
-        {
-            cardType = type;
-        }
-    }*/
-/*    public class CardAuthorizationHandler : AuthorizationHandler<CardRequirement>
-    {
-        protected override Task HandleRequirementAsync(
-            AuthorizationHandlerContext context, CardRequirement requirement)
-        {
-            var type = context.User.Claims.FirstOrDefault(x=>x.Type==Operation.card)?.Value??"";
-            if (requirement.cardType == type)
-            {
-                context.Succeed(requirement);
-            }
-            return Task.CompletedTask;
-        }
-    }*/
-
-    
 }

@@ -61,7 +61,7 @@ namespace AuthPro.Controllers
                     }
                 }else if (requirement.Name == ResourceOpt.insert)
                 {
-                    if (val == "ideny2")
+                    if (val == "ideny")
                     {
                         context.Succeed(requirement);
                     }

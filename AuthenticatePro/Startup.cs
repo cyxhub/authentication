@@ -87,7 +87,7 @@ namespace AuthenticatePro
             services.AddScoped<IAuthorizationHandler, ResourceAuthorizeHandler>();
             services.AddScoped<IAuthorizationHandler, CustomAuthorizationHandler>();
             services.AddSingleton<IAuthorizationPolicyProvider, CustomAuthorizationProvider>();
-            services.AddControllersWithViews();
+            services.AddMvc();
             services.AddScoped<UserStore>();
         }
 

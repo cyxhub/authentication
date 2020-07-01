@@ -21,11 +21,11 @@ namespace AuthPro.Models
         public IEnumerable<Users> users = new List<Users> { 
             new Users
             {
-                id=1,name="nm",email="rt@rt.com",address="def",password="nm",type=CardType.author,level=4
+                id=1,name="jerry",email="rt@rt.com",address="def",password="jerry",type=CardType.author,level=4
             },
             new Users
             {
-                id=2,name="km",email="er@rert.com",address="def",password="km",type=CardType.subscribe,level=3
+                id=2,name="nino",email="er@rert.com",address="def",password="nino",type=CardType.subscribe,level=3
             },
             new Users
             {
@@ -33,7 +33,7 @@ namespace AuthPro.Models
             },
              new Users
             {
-                id=3,name="ef",email="ef@et.com",address="def",password="ef",type=CardType.author,level=6
+                id=4,name="ef",email="ef@et.com",address="def",password="ef",type=CardType.author,level=6
             },
         };
     }
