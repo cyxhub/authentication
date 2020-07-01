@@ -93,5 +93,9 @@ namespace AuthenticatePro.Controllers
         {
             return View();
         }
+        public IActionResult log2()
+        {
+            return Json("logout event");
+        }
     }
 }
