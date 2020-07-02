@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "Basic\Basic.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthPro", "AuthenticatePro\AuthPro.csproj", "{18696151-C3F6-43C3-B878-F429E24A15BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tmp", "tmp\tmp.csproj", "{3F743DCF-D764-456C-9B7F-B0AD92C89B23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{18696151-C3F6-43C3-B878-F429E24A15BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18696151-C3F6-43C3-B878-F429E24A15BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18696151-C3F6-43C3-B878-F429E24A15BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F743DCF-D764-456C-9B7F-B0AD92C89B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F743DCF-D764-456C-9B7F-B0AD92C89B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F743DCF-D764-456C-9B7F-B0AD92C89B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F743DCF-D764-456C-9B7F-B0AD92C89B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -76,14 +76,15 @@ namespace AuthenticatePro
                         ClockSkew = TimeSpan.FromSeconds(300)
                     };
                 });
-            
-            services.AddAuthorization(options=>
+
+            services.AddAuthorization(options =>
             {
-                options.AddPolicy("normal",policy=>
-                {
-                    policy.RequireAuthenticatedUser().Build();
+                /*options.AddPolicy("normal", policy =>
+                 {
+                     policy.RequireAuthenticatedUser().Build();
                     //policy.RequireAuthenticatedUser().RequireClaim("","").Build();
-                });
+                });*/
+                
             });
             services.AddScoped<IAuthorizationHandler, ResourceAuthorizeHandler>();
             services.AddScoped<IAuthorizationHandler, CustomAuthorizationHandler>();
@@ -110,8 +111,23 @@ namespace AuthenticatePro
             app.UseSession();
             app.UseRouting();
             app.UseAuthentication();//AuthenticationMiddleware
+            app.Use(async (context, next) =>
+            {
+                var v = context.GetEndpoint().Metadata;
+                foreach (var i in v)
+                {
+                    Console.WriteLine(i + "-=-=-=-=-=-=");
+                }
+                var endpoint = context.GetEndpoint();
+                var authorizeData = endpoint?.Metadata.GetOrderedMetadata<IAuthorizeData>() ?? Array.Empty<IAuthorizeData>();
+                foreach (var i in authorizeData)
+                {
+                    Console.WriteLine(i);
+                }
+                await next();
+            });
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

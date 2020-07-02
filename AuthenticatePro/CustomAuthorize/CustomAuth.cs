@@ -11,11 +11,7 @@ namespace AuthPro.CustomAuthorize
     public static class Operation
     {
         public const string LimitLevel = "LimitLevel";
-        /*public const string card = "card";
-        public static List<string> operationList = new List<string>
-        {
-            LimitLevel,card
-        };*/
+        
     }
     public class LimitLevelAttribute : AuthorizeAttribute
     {
@@ -46,20 +42,7 @@ namespace AuthPro.CustomAuthorize
             return Task.CompletedTask;
         }
     }
-    public class CustomAuthorizationFactory
-    {
-        public static AuthorizationPolicy Create(string policyName)
-        {
-            var names = policyName.Split(".");
-            var type = names.First();
-            var val = names.Last();
-            var policy = new AuthorizationPolicyBuilder();
-            if (type == Operation.LimitLevel)
-                return policy.AddRequirements(new LimitValueRequirement(int.Parse(val))).Build();
-
-            return null;
-        }
-    }
+   
     public class CustomAuthorizationProvider:
         DefaultAuthorizationPolicyProvider
     {
@@ -69,16 +52,14 @@ namespace AuthPro.CustomAuthorize
         }
         public override Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
-            /*foreach(var opt in Operation.operationList)
-            {
-                if (policyName.StartsWith(opt))
-                {
-                    return Task.FromResult(CustomAuthorizationFactory.Create(policyName));
-                }
-            }*/
             if (policyName.StartsWith(Operation.LimitLevel))
             {
-                return Task.FromResult(CustomAuthorizationFactory.Create(policyName));
+                var names = policyName.Split(".");
+                var type = names.First();
+                var val = names.Last();
+                var policy = new AuthorizationPolicyBuilder();
+                if (type == Operation.LimitLevel)
+                    return Task.FromResult(policy.AddRequirements(new LimitValueRequirement(int.Parse(val))).Build());
             }
             return base.GetPolicyAsync(policyName);
         }

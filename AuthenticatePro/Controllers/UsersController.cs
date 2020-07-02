@@ -64,11 +64,11 @@ namespace AuthPro.Controllers
             return View(userStore.users);
         }
 
-        [LimitLevel(4)]
+        /*[LimitLevel(4)]
         public IActionResult subscribe()
         {
             UserStore userStore = new UserStore();
             return View(userStore.users);
-        }
+        }*/
     }
 }

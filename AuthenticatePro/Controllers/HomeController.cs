@@ -11,6 +11,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using IdentityModel;
 using AuthPro.CustomAuthorize;
+using Microsoft.AspNetCore.Http;
 
 namespace AuthenticatePro.Controllers
 {
