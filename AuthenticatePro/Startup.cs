@@ -111,7 +111,7 @@ namespace AuthenticatePro
             app.UseSession();
             app.UseRouting();
             app.UseAuthentication();//AuthenticationMiddleware
-            app.Use(async (context, next) =>
+            /*app.Use(async (context, next) =>
             {
                 var v = context.GetEndpoint().Metadata;
                 foreach (var i in v)
@@ -125,7 +125,7 @@ namespace AuthenticatePro
                     Console.WriteLine(i);
                 }
                 await next();
-            });
+            });*/
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>
